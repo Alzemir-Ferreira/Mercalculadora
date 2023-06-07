@@ -25,22 +25,22 @@
 
     <div class="container d-flex justify-content-center align-items-center">
       <form class="row g-3">
-        <div class="col-auto">
-          <label for="valorTotal" class="visually-hidden">Valor Atual</label>
-          <input type="number" id="valorTotal" class="form-control" placeholder="Valor Atual" required
+        <div class="col-8">
+          <label for="valorTotal" class="visually-hidden p-0">Saldo Atual</label>
+          <input type="number" id="valorTotal" class="form-control" placeholder="Saldo Atual" required
             inputmode="decimal" min="0">
         </div>
         <div class="col-auto">
-          <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Saldo Atual</button>
+          <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Definir</button>
         </div>
       </form>
     </div>
 
 
     <div class="row mt-4">
-      <div class="col-10 col-md-6 offset-md-3">
+      <div class="col-12 col-md-6 offset-md-3">
         <select id="produto" class="form-select" required>
-          <option class="disabled" value="">Lista de Compras</option>
+          <option class="" value="">Lista de Compras</option>
           <option value="Produto x">Produto x</option>
           <option value="Produto y">Produto y</option>
           <option value="Produto z">Produto z</option>
