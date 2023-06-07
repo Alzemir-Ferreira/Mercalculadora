@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Mercalculadora</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Mercalculadora</h1>
+
+  <div class="valor-total">
+    <input type="number" id="valorTotal" placeholder="Saldo Atual" required inputmode="decimal" min="0">
+    <button onclick="atualizarValorTotal()">Inserir Valor</button>
+  </div>
+
+  <select id="produto" required>
+
+    <option value="">Lista de Compras</option>
+    <option value="Produto x">Produto x</option>
+    <option value="Produto y">Produto y</option>
+    <option value="Produto z">Produto z</option>
+    <option value="Outros">Outros</option>
+  </select>
+
+  <input type="number" id="quantidade" placeholder="Quantidade" required inputmode="numeric" min="1">
+  <input type="number" id="valor" placeholder="Valor" required inputmode="decimal" min="0">
+  <button onclick="adicionarItem()">Adicionar Item</button>
+
+  <table id="lista">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quant.</th>
+        <th>Unitário</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="total"></div>
+  <div id="saldo"></div>
+
+  <button class="limparlista" onclick="limparLista()">Limpar Lista</button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

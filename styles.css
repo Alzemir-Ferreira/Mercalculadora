@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  touch-action: pan-x pan-y;
+  -ms-content-zooming: none;
+  -ms-touch-action: pan-x pan-y;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.valor-total {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin: 0 auto;
+}
+
+form {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+input,
+select,
+button {
+  width: 70%;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  max-width: 40%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#total {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.limparlista {
+  background-color: #f44336;
+}
+
+#saldo {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 30rem) {
+  h1 {
+    font-size: 1.2rem;
+  }
+  input,
+  select,
+  button {
+    font-size: 0.8rem;
+  }
+  table {
+    font-size: 0.8rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
