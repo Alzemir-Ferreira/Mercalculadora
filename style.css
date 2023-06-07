@@ -1,0 +1,11 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+body {
+  overflow-x: hidden;
+  touch-action: pan-x pan-y; /* Permite o movimento de arrastar (pan) */
+  user-zoom: fixed; /* Impede o zoom */
+}
