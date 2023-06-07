@@ -6,59 +6,90 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Mercalculadora</title>
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
-  <h1>Mercalculadora</h1>
+  <h1 class="text-center">Mercalculadora</h1>
 
-  <div class="valor-total">
-    <input type="number" id="valorTotal" placeholder="Saldo Atual" required inputmode="decimal" min="0">
-    <button onclick="atualizarValorTotal()">Inserir Valor</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="mb-3">
+          <input type="number" id="valorTotal" class="form-control" placeholder="Saldo Atual" required
+            inputmode="decimal" min="0">
+        </div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-success" onclick="atualizarValorTotal()">Inserir Valor</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-6 offset-md-3">
+        <select id="produto" class="form-select" required>
+          <option value="">Lista de Compras</option>
+          <option value="Produto x">Produto x</option>
+          <option value="Produto y">Produto y</option>
+          <option value="Produto z">Produto z</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
+          min="1">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-6 offset-md-3">
+        <table id="lista" class="table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quant.</th>
+              <th>Unitário</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div id="total" class="text-center"></div>
+        <div id="saldo" class="text-center"></div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="d-grid gap-2">
+          <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
+        </div>
+      </div>
+    </div>
   </div>
-
-   <select id="produto" required>
-    <option value="">Lista de Compras</option>
-    <option value="Leite">Leite</option>
-    <option value="Pão">Pão</option>
-    <option value="Arroz">Arroz</option>
-    <option value="Feijão">Feijão</option>
-    <option value="Carne">Carne</option>
-    <option value="Frango">Frango</option>
-    <option value="Peixe">Peixe</option>
-    <option value="Ovos">Ovos</option>
-    <option value="Manteiga">Manteiga</option>
-    <option value="Açúcar">Açúcar</option>
-    <option value="Sal">Sal</option>
-    <option value="Óleo de cozinha">Óleo de cozinha</option>
-    <option value="Massas">Massas</option>
-    <option value="Molho de tomate">Molho de tomate</option>
-    <option value="Legumes">Legumes</option>
-    <option value="Frutas">Frutas</option>
-    <option value="Bebidas">Bebidas</option>
-    <option value="Outros">Outros</option>
-  </select>
-
-  <input type="number" id="quantidade" placeholder="Quantidade" required inputmode="numeric" min="1">
-  <input type="number" id="valor" placeholder="Valor" required inputmode="decimal" min="0">
-  <button onclick="adicionarItem()">Adicionar Item</button>
-
-  <table id="lista">
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Quant.</th>
-        <th>Unitário</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-
-  <div id="total"></div>
-  <div id="saldo"></div>
-
-  <button class="limparlista" onclick="limparLista()">Limpar Lista</button>
 
   <script src="script.js"></script>
 </body>
