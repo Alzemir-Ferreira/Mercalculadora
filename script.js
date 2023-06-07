@@ -100,6 +100,7 @@ function limparLista() {
     exibirLista();
     localStorage.removeItem("listaDeCompras");
     atualizarSaldo();
+    location.reload(); 
   }
 }
 
