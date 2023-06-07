@@ -4,95 +4,107 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Mercalculadora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <!-- Tipografia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <title>Mercalculadora</title>
 </head>
 
 <body>
-  <h1 class="text-center">Mercalculadora</h1>
 
-  <div class="container d-flex justify-content-center align-items-center">
-    <form class="row g-3">
-      <div class="col-auto">
-        <label for="valorTotal" class="visually-hidden">Valor Atual</label>
-        <input type="number" id="valorTotal" class="form-control" placeholder="Valor Atual" required inputmode="decimal"
-          min="0">
-      </div>
-      <div class="col-auto">
-        <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Saldo Atual</button>
-      </div>
-    </form>
-  </div>
+  <div class="p-3">
+    <h1 class="text-center pb-2 fw-bold">Mercalculadora</h1>
 
-
-  <div class="row mt-4">
-    <div class="col-12 col-md-6 offset-md-3">
-      <select id="produto" class="form-select" required>
-        <option value="">Lista de Compras</option>
-        <option value="Produto x">Produto x</option>
-        <option value="Produto y">Produto y</option>
-        <option value="Produto z">Produto z</option>
-        <option value="Outros">Outros</option>
-      </select>
+    <div class="container d-flex justify-content-center align-items-center">
+      <form class="row g-3">
+        <div class="col-auto">
+          <label for="valorTotal" class="visually-hidden">Valor Atual</label>
+          <input type="number" id="valorTotal" class="form-control" placeholder="Valor Atual" required
+            inputmode="decimal" min="0">
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Saldo Atual</button>
+        </div>
+      </form>
     </div>
-  </div>
 
-  <div class="row mt-3">
-    <div class="col-12 col-md-6 offset-md-3">
-      <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
-        min="1">
-    </div>
-  </div>
 
-  <div class="row mt-3">
-    <div class="col-12 col-md-6 offset-md-3">
-      <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-12 col-md-6 offset-md-3">
-      <div class="d-grid gap-2">
-        <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
+    <div class="row mt-4">
+      <div class="col-10 col-md-6 offset-md-3">
+        <select id="produto" class="form-select" required>
+          <option class="disabled" value="">Lista de Compras</option>
+          <option value="Produto x">Produto x</option>
+          <option value="Produto y">Produto y</option>
+          <option value="Produto z">Produto z</option>
+          <option value="Outros">Outros</option>
+        </select>
       </div>
     </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-12 col-md-6 offset-md-3">
-      <table id="lista" class="table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quant.</th>
-            <th>Unitário</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-12 col-md-6 offset-md-3">
-      <div id="total" class="text-center"></div>
-      <div id="saldo" class="text-center"></div>
-    </div>
-  </div>
-
-  <div class="row mt-3">
-    <div class="col-12 col-md-6 offset-md-3">
-      <div class="d-grid gap-2">
-        <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
+          min="1">
       </div>
     </div>
-  </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12 col-md-6 offset-md-3">
+        <table id="lista" class="table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quant.</th>
+              <th>Unitário</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div id="total" class="text-center"></div>
+        <div id="saldo" class="text-center"></div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-12 col-md-6 offset-md-3">
+        <div class="d-grid gap-2">
+          <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
+  </div>
+
 </body>
 
 </html>
