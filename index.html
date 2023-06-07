@@ -13,82 +13,83 @@
 <body>
   <h1 class="text-center">Mercalculadora</h1>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div class="mb-3">
-          <input type="number" id="valorTotal" class="form-control" placeholder="Saldo Atual" required
-            inputmode="decimal" min="0">
-        </div>
-        <div class="d-grid gap-2">
-          <button class="btn btn-success" onclick="atualizarValorTotal()">Inserir Valor</button>
-        </div>
+  <div class="container d-flex justify-content-center align-items-center">
+    <form class="row g-3">
+      <div class="col-auto">
+        <label for="valorTotal" class="visually-hidden">Valor Atual</label>
+        <input type="number" id="valorTotal" class="form-control" placeholder="Valor Atual" required inputmode="decimal"
+          min="0">
       </div>
-    </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Saldo Atual</button>
+      </div>
+    </form>
+  </div>
 
-    <div class="row mt-4">
-      <div class="col-12 col-md-6 offset-md-3">
-        <select id="produto" class="form-select" required>
-          <option value="">Lista de Compras</option>
-          <option value="Produto x">Produto x</option>
-          <option value="Produto y">Produto y</option>
-          <option value="Produto z">Produto z</option>
-          <option value="Outros">Outros</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
-          min="1">
-      </div>
+  <div class="row mt-4">
+    <div class="col-12 col-md-6 offset-md-3">
+      <select id="produto" class="form-select" required>
+        <option value="">Lista de Compras</option>
+        <option value="Produto x">Produto x</option>
+        <option value="Produto y">Produto y</option>
+        <option value="Produto z">Produto z</option>
+        <option value="Outros">Outros</option>
+      </select>
     </div>
+  </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
-      </div>
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 offset-md-3">
+      <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
+        min="1">
     </div>
+  </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
-        </div>
-      </div>
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 offset-md-3">
+      <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
     </div>
+  </div>
 
-    <div class="row mt-4">
-      <div class="col-12 col-md-6 offset-md-3">
-        <table id="lista" class="table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quant.</th>
-              <th>Unitário</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 offset-md-3">
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
       </div>
     </div>
+  </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div id="total" class="text-center"></div>
-        <div id="saldo" class="text-center"></div>
-      </div>
+  <div class="row mt-4">
+    <div class="col-12 col-md-6 offset-md-3">
+      <table id="lista" class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quant.</th>
+            <th>Unitário</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
+  </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div class="d-grid gap-2">
-          <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
-        </div>
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 offset-md-3">
+      <div id="total" class="text-center"></div>
+      <div id="saldo" class="text-center"></div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12 col-md-6 offset-md-3">
+      <div class="d-grid gap-2">
+        <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="script.js"></script>
