@@ -2,12 +2,8 @@ let lista = [];
 let saldoAtual = 0;
 
 function adicionarItem() {
-  const produtoSelect = document.getElementById("produto");
-  const produtoIndex = produtoSelect.selectedIndex;
-  const produtoOption = produtoSelect.options[produtoIndex];
-
-  const produto = produtoOption.value;
-  const produtoLabel = produtoOption.label;
+  const produtoInput = document.getElementById("produto");
+  const produto = produtoInput.value.trim();
   const quantidade = parseFloat(
     document.getElementById("quantidade").value.replace(",", ".")
   );
@@ -24,7 +20,6 @@ function adicionarItem() {
 
   const item = {
     produto,
-    produtoLabel,
     quantidade,
     valor,
     total: total.toFixed(2),
@@ -35,12 +30,6 @@ function adicionarItem() {
   limparCampos();
   salvarListaNoLocalStorage();
   atualizarSaldo();
-  removerOpcaoSelecionada(produtoIndex);
-}
-
-function removerOpcaoSelecionada(index) {
-  const produtoSelect = document.getElementById("produto");
-  produtoSelect.remove(index);
 }
 
 function exibirLista() {
@@ -100,7 +89,6 @@ function limparLista() {
     exibirLista();
     localStorage.removeItem("listaDeCompras");
     atualizarSaldo();
-    location.reload(); 
   }
 }
 
