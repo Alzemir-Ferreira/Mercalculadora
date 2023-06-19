@@ -6,6 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+  <!-- favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="./favicon/site.webmanifest">
+  
   <!-- Tipografia -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,15 +43,9 @@
     </div>
 
 
-    <div class="row mt-4">
+    <div class="row mt-3">
       <div class="col-12 col-md-6 offset-md-3">
-        <select id="produto" class="form-select" required>
-          <option class="" value="">Lista de Compras</option>
-          <option value="Produto x">Produto x</option>
-          <option value="Produto y">Produto y</option>
-          <option value="Produto z">Produto z</option>
-          <option value="Outros">Outros</option>
-        </select>
+        <input type="text" id="produto" class="form-control" placeholder="Produto da Lista" required>
       </div>
     </div>
 
@@ -102,7 +102,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   </div>
 
 </body>
