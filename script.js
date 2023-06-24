@@ -1,15 +1,17 @@
 let lista = [];
 let saldoAtual = 0;
 
+$(document).ready(function () {
+  recuperarListaDoLocalStorage();
+  exibirLista();
+  recuperarSaldoDoLocalStorage();
+});
+
 function adicionarItem() {
-  const produtoInput = document.getElementById("produto");
-  const produto = produtoInput.value.trim();
-  const quantidade = parseFloat(
-    document.getElementById("quantidade").value.replace(",", ".")
-  );
-  const valor = parseFloat(
-    document.getElementById("valor").value.replace(",", ".")
-  );
+  const produtoInput = $("#produto");
+  const produto = produtoInput.val().trim();
+  const quantidade = parseFloat($("#quantidade").val().replace(",", "."));
+  const valor = parseFloat($("#valor").val().replace(",", "."));
 
   if (produto === "" || isNaN(quantidade) || isNaN(valor)) {
     alert("Preencha todos os campos corretamente.");
@@ -33,14 +35,14 @@ function adicionarItem() {
 }
 
 function exibirLista() {
-  const tbody = document.querySelector("table#lista tbody");
-  tbody.innerHTML = "";
+  const tbody = $("table#lista tbody");
+  tbody.html("");
 
   for (const item of lista) {
     const { produto, quantidade, valor, total } = item;
 
-    const row = document.createElement("tr");
-    row.innerHTML = `
+    const row = $("<tr></tr>");
+    row.html(`
       <td>${produto}</td>
       <td>${quantidade.toFixed(2)}</td>
       <td>${valor.toLocaleString("pt-BR", {
@@ -51,8 +53,8 @@ function exibirLista() {
         style: "currency",
         currency: "BRL",
       })}</td>
-    `;
-    tbody.appendChild(row);
+    `);
+    tbody.append(row);
   }
 
   calcularTotal();
@@ -60,16 +62,18 @@ function exibirLista() {
 
 function calcularTotal() {
   const total = lista.reduce((acc, item) => acc + parseFloat(item.total), 0);
-  document.getElementById("total").textContent = `Total: ${total.toLocaleString(
-    "pt-BR",
-    { style: "currency", currency: "BRL" }
-  )}`;
+  $("#total").text(
+    `Total: ${total.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })}`
+  );
 }
 
 function limparCampos() {
-  document.getElementById("produto").value = "";
-  document.getElementById("quantidade").value = "";
-  document.getElementById("valor").value = "";
+  $("#produto").val("");
+  $("#quantidade").val("");
+  $("#valor").val("");
 }
 
 function salvarListaNoLocalStorage() {
@@ -94,20 +98,20 @@ function limparLista() {
 
 function atualizarSaldo() {
   const total = lista.reduce((acc, item) => acc + parseFloat(item.total), 0);
-  const saldoAtualElement = document.getElementById("saldo");
-  saldoAtual = parseFloat(
-    document.getElementById("valorTotal").value.replace(",", ".")
-  );
+  const saldoAtualElement = $("#saldo");
+  saldoAtual = parseFloat($("#valorTotal").val().replace(",", "."));
 
   if (isNaN(saldoAtual)) {
     saldoAtual = 0;
   }
 
   saldoAtual -= total;
-  saldoAtualElement.textContent = `Saldo Atual: ${saldoAtual.toLocaleString(
-    "pt-BR",
-    { style: "currency", currency: "BRL" }
-  )}`;
+  saldoAtualElement.text(
+    `Saldo Atual: ${saldoAtual.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })}`
+  );
   salvarSaldoNoLocalStorage();
 }
 
@@ -119,19 +123,15 @@ function recuperarSaldoDoLocalStorage() {
   const saldoSalvo = localStorage.getItem("saldoAtual");
   if (saldoSalvo) {
     saldoAtual = parseFloat(saldoSalvo);
-    document.getElementById(
-      "saldo"
-    ).textContent = `Saldo Atual: ${saldoAtual.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    })}`;
+    $("#saldo").text(
+      `Saldo Atual: ${saldoAtual.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`
+    );
   }
 }
 
 function atualizarValorTotal() {
   atualizarSaldo();
 }
-
-recuperarListaDoLocalStorage();
-exibirLista();
-recuperarSaldoDoLocalStorage();
