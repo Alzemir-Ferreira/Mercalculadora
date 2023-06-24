@@ -11,99 +11,142 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
   <link rel="manifest" href="./favicon/site.webmanifest">
-  
+
   <!-- Tipografia -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <title>Mercalculadora</title>
 </head>
 
 <body>
-
-  <div class="p-3">
-    <h1 class="text-center pb-2 fw-bold">Mercalculadora</h1>
-
-    <div class="container d-flex justify-content-center align-items-center">
-      <form class="row g-3">
-        <div class="col-8">
-          <label for="valorTotal" class="visually-hidden p-0">Saldo Atual</label>
-          <input type="number" id="valorTotal" class="form-control" placeholder="Saldo Atual" required
-            inputmode="decimal" min="0">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-12 text-left">
+        <button id="trocarTelaBtn" class="btn btn-primary"></button>
+      </div>
+    </div>
+    <div id="tela1" class="text-center">
+      <h1 class="pb-1 fw-bold">Lista de Compras</h1>
+      <div class="row mt-3">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+          <div class="input-group">
+            <input type="text" id="nomeInput" class="form-control" placeholder="Digite o nome">
+            <div class="input-group-append">
+              <button id="adicionarBtn" class="btn btn-primary">Adicionar à lista</button>
+            </div>
+          </div>
         </div>
-        <div class="col-auto">
-          <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Definir</button>
-        </div>
-      </form>
-    </div>
-
-
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <input type="text" id="produto" class="form-control" placeholder="Produto da Lista" required>
       </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required inputmode="numeric"
-          min="1">
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
-      </div>
-    </div>
-
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div class="d-grid gap-2">
-          <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
+      <div id="listaCompras" class="row mt-3 d-none">
+        <div class="col-12">
+          <table class="table table-bordered table-sm">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Inserir conteúdo dinamicamente -->
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
 
-    <div class="row mt-4">
-      <div class="col-12 col-md-6 offset-md-3">
-        <table id="lista" class="table">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Quant.</th>
-              <th>Unitário</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+    <div id="tela2" class="text-center d-none">
+      <h1 class="text-center pb-1 fw-bold">Mercalculadora</h1>
+      <div class="container d-flex justify-content-center align-items-center">
+        <form class="row g-3">
+          <div class="col-8">
+            <label for="valorTotal" class="visually-hidden p-0">Saldo Atual</label>
+            <input type="number" id="valorTotal" class="form-control" placeholder="Saldo Atual" required
+              inputmode="decimal" min="0">
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-success" onclick="atualizarValorTotal()">Definir</button>
+          </div>
+        </form>
       </div>
-    </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div id="total" class="text-center"></div>
-        <div id="saldo" class="text-center"></div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <input type="text" id="produto" class="form-control" placeholder="Produto da Lista" required>
+        </div>
       </div>
-    </div>
 
-    <div class="row mt-3">
-      <div class="col-12 col-md-6 offset-md-3">
-        <div class="d-grid gap-2">
-          <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <input type="number" id="quantidade" class="form-control" placeholder="Quantidade" required
+            inputmode="numeric" min="1">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <input type="number" id="valor" class="form-control" placeholder="Valor" required inputmode="decimal" min="0">
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary" onclick="adicionarItem()">Adicionar Item</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 offset-md-3">
+          <table id="lista" class="table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quant.</th>
+                <th>Unitário</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div id="total" class="text-center"></div>
+          <div id="saldo" class="text-center"></div>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="d-grid gap-2">
+            <button class="btn btn-danger" onclick="limparLista()">Limpar Lista</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script src="script.js" defer></script>
+
   </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="lista.js"></script>
 
 </body>
 
