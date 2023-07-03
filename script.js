@@ -36,7 +36,7 @@ function exibirLista() {
   const tbody = document.querySelector("table#lista tbody");
   tbody.innerHTML = "";
 
-  for (const item of lista) {
+  for (const [index, item] of lista.entries()) {
     const { produto, quantidade, valor, total } = item;
 
     const row = document.createElement("tr");
@@ -51,6 +51,7 @@ function exibirLista() {
         style: "currency",
         currency: "BRL",
       })}</td>
+      <td><button onclick="excluirItem(${index})">Excluir</button></td>
     `;
     tbody.appendChild(row);
   }
@@ -129,6 +130,13 @@ function recuperarSaldoDoLocalStorage() {
 }
 
 function atualizarValorTotal() {
+  atualizarSaldo();
+}
+
+function excluirItem(index) {
+  lista.splice(index, 1);
+  exibirLista();
+  salvarListaNoLocalStorage();
   atualizarSaldo();
 }
 
